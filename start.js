@@ -62,6 +62,7 @@ function getSMAPI(response) {
 			title: clubElems[i].name,
 			animation: google.maps.Animation.DROP,
 			id: clubElems[i].id,
+			icon: "golf.png"
 
 			});
 

@@ -6,12 +6,15 @@ var clubBtn; // knapp för golfklubbar
 var foodBtn; // knapp för restauranger
 var hotelBtn; // knapp för boende
 var activitesBtn; // knapp för övriga aktiviterer
-var myMarkers; // klubbmarkeringar.
+var myMarkers = []; // klubbmarkeringar.
 // arrayer för mareringar
 var coordinates = [];
-var myMarkers = []; 
 var JSONobjects = []; //array med JSONobjekt
 
+var choosenMarker; // speciell markör för vald klubb
+
+var clubMarkers;
+var hotelMarkers = [];
 
 function init() {
 
@@ -21,9 +24,9 @@ function init() {
 	poiBtn = document.getElementById("activitesBtn");
 
 	addListener(clubBtn,"click",setGolfMarkers);
-	addListener(foodBtn,"click",setFoodMarkers);
+/*	addListener(foodBtn,"click",setFoodMarkers);
 	addListener(hotelBtn,"click",setHotelMarkers);
-	addListener(poiBtn,"click",setActivitiesMarkers);
+	addListener(poiBtn,"click",setActivitiesMarkers);*/
 
 	requestID();
 
@@ -62,18 +65,19 @@ function requestID() {
           	zoom: 10,
     		});
 
-    		var marker = new google.maps.Marker({
+    		choosenMarker = new google.maps.Marker({
 			position: myLatLng,
 			map: map,
 			title: choosenClub.name,
-  });
+			icon:'golf2.png',
+ 			});
 
+		}
 	}
-}
 }
 
 // hämtar golfklubbar via SMAPI
-function requestSMAPI(tags) {
+function requestSMAPI(callback, tags) {
 
 	var request; // request for AJAX
 	var key = "reu|NdmV";
@@ -83,41 +87,81 @@ function requestSMAPI(tags) {
 	else if (ActiveXObject) { request = new ActiveXObject("Microsoft.XMLHTTP"); }
 	else { alert("Tyvärr inget stöd för AJAX, så data kan inte läsas in"); return false; }
 	
-	request.open("GET","https://cactuar.lnu.se/course/1me302/?key=reu|NdmV&controller=location&method=getall&method=getByTags&tags=" + tags,true);
+	request.open("GET","https://cactuar.lnu.se/course/1me302/?key=" + key + "&controller=location&method=getByTags&tags=" + tags,true);
 	request.send(null); // Skicka begäran till servern
 	request.onreadystatechange = function () { // Funktion för att avläsa status i kommunikationen
 		if ( (request.readyState == 4) && (request.status == 200) ) {
 			
 			response = JSON.parse(request.responseText);
-			JSONobjects = response.payload;
-
-			for (i = 0; i < JSONobjects.length; i++) {
-
-				latlng =  {lat: Number(JSONobjects[i].latitude), lng: Number(JSONobjects[i].longitude)};
-
-				coordinates.push(latlng);
-			}
-				addMapMarkers();
+			var JSONobjects = response.payload;
+			callback(JSONobjects);
 		}
 	}
 } // end requestSMAPIgolf
 
+function createClubMarkers(smapiObjects) {
+
+	for (var i = 0; i < smapiObjects.length; i++) {
+		if (smapiObjects[i].id == localStorage.clubID) {
+			smapiObjects.splice(i, 1);
+			break;
+		}
+	}
+
+	clubMarkers = createMarkers(smapiObjects, "golf.png");
+	showMarkers(clubMarkers);
+
+}
+
+function createMarkers(smapiObjects, pic) {
+
+	var markers = [];
+
+	for (var i = 0; i < smapiObjects.length; i++) {
+		var latlng = {lat: Number(smapiObjects[i].latitude), lng: Number(smapiObjects[i].longitude)};
+		var newMarker = new google.maps.Marker ({
+			position: latlng,
+			title: smapiObjects[i].name,
+			animation: google.maps.Animation.DROP,
+			icon: pic });
+
+		markers.push(newMarker);
+	}
+
+	return markers;
+}
+
+function showMarkers(markers) {
+
+	for (var i = 0; i < markers.length; i++) {
+
+		markers[i].setMap(map);
+	}
+}
+
+function hideMarkers(markers) {
+
+	for (var i = 0; i < markers.length; i++) {
+
+		markers[i].setMap(null);
+	}
+}
+
 function setGolfMarkers() {
+
+	if (clubMarkers == null) {
+		requestSMAPI(createClubMarkers, "golf");
+	} else {
+		showMarkers(clubMarkers);
+	}
 
 	removeListener(clubBtn,"click",setGolfMarkers);
 	addListener(clubBtn,"click",removeGolfMarkers);
-
-	requestSMAPI("golf");
 }
 
 function removeGolfMarkers() {
 
-	var i; // loopvariabel.
-
-	for (i = 0; i < myMarkers.length; i++) {
-
-			myMarkers[i].setMap(null);
-	}
+	hideMarkers(clubMarkers);
 
 	addListener(clubBtn,"click",setGolfMarkers);
 	removeListener(clubBtn,"click",removeGolfMarkers);
@@ -138,8 +182,7 @@ function addMapMarkers() {
 			title: JSONobjects[i].name,
 			animation: google.maps.Animation.DROP,
 			id: JSONobjects[i].id,
-
-			});
+			icon:'golf.png'});
 
 		myMarkers[i].setMap(map); // sätter makeringen på vald karta för att kunna ta bort dem genom myMarkers[i].setMap(null);
 	} 
