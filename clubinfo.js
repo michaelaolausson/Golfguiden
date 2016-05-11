@@ -5,35 +5,34 @@ var map; // kartobjektet
 var clubBtn; // knapp för golfklubbar
 var foodBtn; // knapp för restauranger
 var hotelBtn; // knapp för boende
-var activitesBtn; // knapp för övriga aktiviterer
+var activitiesBtn; // knapp för övriga aktiviterer
 var myMarkers = []; // klubbmarkeringar.
-// arrayer för mareringar
+// arrayer för markeringar
 var coordinates = [];
 var JSONobjects = []; //array med JSONobjekt
-
 var choosenMarker; // speciell markör för vald klubb
-
 var clubMarkers;
-var hotelMarkers = [];
+var foodMarkers;
+var hotelMarkers;
+var activitiesMarkers;
 
 function init() {
 
 	clubBtn	= document.getElementById("clubBtn");
 	foodBtn	= document.getElementById("foodBtn");
 	hotelBtn = document.getElementById("hotelBtn");
-	poiBtn = document.getElementById("activitesBtn");
+	activitiesBtn = document.getElementById("activitesBtn");
 
-	addListener(clubBtn,"click",setGolfMarkers);
-/*	addListener(foodBtn,"click",setFoodMarkers);
+	addListener(clubBtn,"click",setClubMarkers);
 	addListener(hotelBtn,"click",setHotelMarkers);
-	addListener(poiBtn,"click",setActivitiesMarkers);*/
+	addListener(foodBtn,"click",setFoodMarkers);
+	addListener(activitiesBtn,"click",setActivitiesMarkers);
 
 	requestID();
 
 } // end init
 
 addListener(window,"load",init);
-
 
 // lägger in karta för klubb vald på startsidan.
 function requestID() {
@@ -71,11 +70,9 @@ function requestID() {
 			title: choosenClub.name,
 			icon:'golf2.png',
  			});
-
 		}
 	}
 }
-
 // hämtar golfklubbar via SMAPI
 function requestSMAPI(callback, tags) {
 
@@ -99,6 +96,7 @@ function requestSMAPI(callback, tags) {
 	}
 } // end requestSMAPIgolf
 
+//callback-funktion som skickas med vid anrop till SMAPI från setGolfMarkers
 function createClubMarkers(smapiObjects) {
 
 	for (var i = 0; i < smapiObjects.length; i++) {
@@ -110,8 +108,114 @@ function createClubMarkers(smapiObjects) {
 
 	clubMarkers = createMarkers(smapiObjects, "golf.png");
 	showMarkers(clubMarkers);
-
 }
+
+//callback-funktion som skickas med vid anrop till SMAPI från setGolfMarkers
+function createHotelMarkers(smapiObjects) {
+
+	hotelMarkers = createMarkers(smapiObjects, "hotel.png");
+	showMarkers(hotelMarkers);
+}
+
+//callback-funktion som skickas med vid anrop till SMAPI från setFoodMarkers
+function createFoodMarkers(smapiObjects) {
+
+	foodMarkers = createMarkers(smapiObjects, "food.png");
+	showMarkers(foodMarkers);
+}
+
+//callback-funktion som skickas med vid anrop till SMAPI från setFoodMarkers
+function createActivitiesMarkers(smapiObjects) {
+
+	activitiesMarkers = createMarkers(smapiObjects, "activities.png");
+	showMarkers(activitiesMarkers);
+}
+
+function setClubMarkers() {
+
+	if (clubMarkers == null) {
+		requestSMAPI(createClubMarkers, "golf");
+
+	} else {
+
+		showMarkers(clubMarkers);
+	}
+
+	removeListener(clubBtn,"click",setClubMarkers);
+	addListener(clubBtn,"click",hideClubMarkers);
+}
+
+function setHotelMarkers() {
+
+	if (hotelMarkers == null) {
+
+		requestSMAPI(createHotelMarkers, "hotel");
+
+	} else {
+
+		showMarkers(hotelMarkers);
+	}
+
+	removeListener(hotelBtn,"click",setHotelMarkers);
+	addListener(hotelBtn,"click",hideHotelMarkers);
+}
+
+function setFoodMarkers() {
+
+	if (foodMarkers == null) {
+		requestSMAPI(createFoodMarkers, "restaurant");
+	} else {
+		showMarkers(foodMarkers);
+	}
+
+	removeListener(foodBtn,"click",setFoodMarkers);
+	addListener(foodBtn,"click",hideFoodMarkers);
+}
+
+function setActivitiesMarkers() {
+
+	if (activitiesMarkers == null) {
+		requestSMAPI(createActivitiesMarkers, "culture");
+	} else {
+		showMarkers(activitiesMarkers);
+	}
+
+	removeListener(activitiesBtn,"click",setActivitiesMarkers);
+	addListener(activitiesBtn,"click",hideActivitiesMarkers);
+}
+
+function hideClubMarkers() {
+
+	hideMarkers(clubMarkers);
+
+	addListener(clubBtn,"click",setClubMarkers);
+	removeListener(clubBtn,"click",hideClubMarkers);
+}
+
+function hideHotelMarkers() {
+
+	hideMarkers(hotelMarkers);
+
+	addListener(hotelBtn,"click",setHotelMarkers);
+	removeListener(hotelBtn,"click",hideHotelMarkers);
+}
+
+function hideFoodMarkers() {
+
+	hideMarkers(foodMarkers);
+
+	addListener(foodBtn,"click",setFoodMarkers);
+	removeListener(foodBtn,"click",hideFoodMarkers);
+}
+
+function hideActivitiesMarkers() {
+
+	hideMarkers(activitiesMarkers);
+
+	addListener(activitiesBtn,"click",setActivitiesMarkers);
+	removeListener(activitiesBtn,"click",hideActivitiesMarkers);
+}
+ //-- GEMENSAMMA -- FUNKTIONER --//
 
 function createMarkers(smapiObjects, pic) {
 
@@ -133,6 +237,7 @@ function createMarkers(smapiObjects, pic) {
 
 function showMarkers(markers) {
 
+
 	for (var i = 0; i < markers.length; i++) {
 
 		markers[i].setMap(map);
@@ -145,45 +250,4 @@ function hideMarkers(markers) {
 
 		markers[i].setMap(null);
 	}
-}
-
-function setGolfMarkers() {
-
-	if (clubMarkers == null) {
-		requestSMAPI(createClubMarkers, "golf");
-	} else {
-		showMarkers(clubMarkers);
-	}
-
-	removeListener(clubBtn,"click",setGolfMarkers);
-	addListener(clubBtn,"click",removeGolfMarkers);
-}
-
-function removeGolfMarkers() {
-
-	hideMarkers(clubMarkers);
-
-	addListener(clubBtn,"click",setGolfMarkers);
-	removeListener(clubBtn,"click",removeGolfMarkers);
-}
-
- // lägger till markeringar på kartan.
-function addMapMarkers() {
-
-	var i; // loopvariabel
-	var newMarker; // ny kartmarkering
-
-	for (i = 0; i < coordinates.length; i++) {
-
-		newMarker = new google.maps.Marker;
-			myMarkers.push(newMarker);
-			myMarkers[i] = new google.maps.Marker ({
-			position: coordinates[i],
-			title: JSONobjects[i].name,
-			animation: google.maps.Animation.DROP,
-			id: JSONobjects[i].id,
-			icon:'golf.png'});
-
-		myMarkers[i].setMap(map); // sätter makeringen på vald karta för att kunna ta bort dem genom myMarkers[i].setMap(null);
-	} 
 }

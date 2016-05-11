@@ -44,8 +44,10 @@ function getSMAPI(response) {
 
 	map = new google.maps.Map(document.getElementById('map'), {
          
-          center: {lat: 57.167925, lng: 15.347129},
-          zoom: 8,
+        center: {lat: 57.167925, lng: 15.347129},
+        zoom: 8,
+		Color: "#799a24",
+		Weight:	0.1
     });
 		// går igenom samtliga JSON-objekt som är golfrelaterade (golfklubbar)
 		//samt placerar ut markeringar
