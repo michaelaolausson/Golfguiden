@@ -1,6 +1,7 @@
 // Michaela Olausson VT 2016
 // globala variabler
 var map; // kartobjektet
+var key = "reu|NdmV"; // api-nyckel till SMAPI
 //knappar
 var clubBtn; // knapp för golfklubbar
 var foodBtn; // knapp för restauranger
@@ -9,8 +10,10 @@ var activitiesBtn; // knapp för övriga aktiviterer
 var myMarkers = []; // klubbmarkeringar.
 var choosenMarker; // speciell markör för vald klubb
 var clubMarkers;
+var hotelMarkers; 
+var campingMarkers;
+var cabinMarkers;
 var foodMarkers;
-var hotelMarkers;
 var activitiesMarkers;
 
 function init() {
@@ -22,6 +25,7 @@ function init() {
 
 	addListener(clubBtn,"click",setClubMarkers);
 	addListener(hotelBtn,"click",setHotelMarkers);
+	addListener(hotelBtn,"click",setCampingMarkers);
 	addListener(foodBtn,"click",setFoodMarkers);
 	addListener(activitiesBtn,"click",setActivitiesMarkers);
 
@@ -35,7 +39,6 @@ addListener(window,"load",init);
 function requestID() {
 
 	var request; // request for AJAX
-	var key = "reu|NdmV";
 	var response; // JSONdata
 	var choosenClub; // club med id från web storage (sparat från startsidan.)
 	var myLatLng; // koordinater för vald klubb.
@@ -44,7 +47,7 @@ function requestID() {
 	else if (ActiveXObject) { request = new ActiveXObject("Microsoft.XMLHTTP"); }
 	else { alert("Tyvärr inget stöd för AJAX, så data kan inte läsas in"); return false; }
 	
-	request.open("GET","https://cactuar.lnu.se/course/1me302/?key=reu|NdmV&controller=location&method=getspecific&id=" + localStorage.clubID,true);
+	request.open("GET","https://cactuar.lnu.se/course/1me302/?key=" + key + "&controller=location&method=getspecific&id=" + localStorage.clubID,true);
 	request.send(null); // Skicka begäran till servern
 	request.onreadystatechange = function () { // Funktion för att avläsa status i kommunikationen
 		if ( (request.readyState == 4) && (request.status == 200) ) {
@@ -67,6 +70,37 @@ function requestID() {
 			title: choosenClub.name,
 			icon:'golf2.png',
  			});
+
+	 	map.set('styles', [
+			{
+			    featureType: 'road',
+			    elementType: 'geometry',
+			    stylers: [
+			      { color: '#ffffff' },
+			      { weight: 0.8 }
+			    ]
+			}, {
+			    featureType: 'road',
+			    elementType: 'labels',
+			    stylers: [
+			      { saturation: 100 },
+			      { invert_lightness: true }
+			    ]
+			}, {
+			    featureType: 'landscape',
+			    elementType: 'geometry.fill',
+			    stylers: [
+			      { color: '#799a24' }
+			    ]
+			},
+			{
+			    featureType: 'water',
+			    elementType: 'geometry.fill',
+			    stylers: [
+			      { color: '#286cb1' }
+			    ]
+			},  
+			]);
 		}
 	}
 }
@@ -74,7 +108,6 @@ function requestID() {
 function requestSMAPI(callback, tags) {
 
 	var request; // request for AJAX
-	var key = "reu|NdmV";
 	var response; // JSONdata
 
 	if (XMLHttpRequest) { request = new XMLHttpRequest(); } // Olika objekt (XMLHttpRequest eller ActiveXObject), beroende på webbläsare
@@ -107,11 +140,25 @@ function createClubMarkers(smapiObjects) {
 	showMarkers(clubMarkers);
 }
 
-//callback-funktion som skickas med vid anrop till SMAPI från setGolfMarkers
+//callback-funktion som skickas med vid anrop till SMAPI från setHotelMarkers
 function createHotelMarkers(smapiObjects) {
 
 	hotelMarkers = createMarkers(smapiObjects, "hotel.png");
 	showMarkers(hotelMarkers);
+}
+
+//callback-funktion som skickas med vid anrop till SMAPI från setFoodMarkers
+function createCampingMarkers(smapiObjects) {
+
+	activitiesMarkers = createMarkers(smapiObjects, "hotel.png");
+	showMarkers(activitiesMarkers);
+}
+
+//callback-funktion som skickas med vid anrop till SMAPI från setFoodMarkers
+function createCabinMarkers(smapiObjects) {
+
+	activitiesMarkers = createMarkers(smapiObjects, "hotel.png");
+	showMarkers(CabinMarkers);
 }
 
 //callback-funktion som skickas med vid anrop till SMAPI från setFoodMarkers
@@ -121,7 +168,7 @@ function createFoodMarkers(smapiObjects) {
 	showMarkers(foodMarkers);
 }
 
-//callback-funktion som skickas med vid anrop till SMAPI från setFoodMarkers
+//callback-funktion som skickas med vid anrop till SMAPI från setActivitiesMarkers
 function createActivitiesMarkers(smapiObjects) {
 
 	activitiesMarkers = createMarkers(smapiObjects, "activities.png");
@@ -155,6 +202,36 @@ function setHotelMarkers() {
 
 	removeListener(hotelBtn,"click",setHotelMarkers);
 	addListener(hotelBtn,"click",hideHotelMarkers);
+}
+
+function setCampingMarkers() {
+
+	if (campingMarkers == null) {
+
+		requestSMAPI(createCampingMarkers, "camping");
+
+	} else {
+
+		showMarkers(campingMarkers);
+	}
+
+	removeListener(hotelBtn,"click",setCampingMarkers);
+	addListener(hotelBtn,"click",hideCampingMarkers);
+}
+
+function setCabinMarkers() {
+
+	if (cabinMarkers == null) {
+
+		requestSMAPI(createCabinMarkers, "cabin");
+
+	} else {
+
+		showMarkers(cabinMarkers);
+	}
+
+	removeListener(hotelBtn,"click",setCabinMarkers);
+	addListener(hotelBtn,"click",hideCabinMarkers);
 }
 
 function setFoodMarkers() {
@@ -195,6 +272,22 @@ function hideHotelMarkers() {
 
 	addListener(hotelBtn,"click",setHotelMarkers);
 	removeListener(hotelBtn,"click",hideHotelMarkers);
+}
+
+function hideCampingMarkers() {
+
+	hideMarkers(campingMarkers);
+
+	addListener(hotelBtn,"click",setCampingMarkers);
+	removeListener(hotelBtn,"click",hideCampingMarkers);
+}
+
+function hideCabinMarkers() {
+
+	hideMarkers(cabinMarkers);
+
+	addListener(hotelBtn,"click",setCabinMarkers);
+	removeListener(hotelBtn,"click",hideCabinMarkers);
 }
 
 function hideFoodMarkers() {
