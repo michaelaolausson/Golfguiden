@@ -7,9 +7,6 @@ var foodBtn; // knapp för restauranger
 var hotelBtn; // knapp för boende
 var activitiesBtn; // knapp för övriga aktiviterer
 var myMarkers = []; // klubbmarkeringar.
-// arrayer för markeringar
-var coordinates = [];
-var JSONobjects = []; //array med JSONobjekt
 var choosenMarker; // speciell markör för vald klubb
 var clubMarkers;
 var foodMarkers;
