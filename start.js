@@ -1,6 +1,7 @@
 //global variables
 
-var myKey =  "AIzaSyA4sq08oYLsb2ZXGE6AbNHhQfrSFryVEsQ"; // google Maps API key
+//var myKey =  "AIzaSyA4sq08oYLsb2ZXGE6AbNHhQfrSFryVEsQ"; // google Maps API key
+var key = "reu|NdmV"; // SMAPI-nyckel
 var clubElems; //array for clubinfo elems (data from SMAPI).
 
 function init() {
@@ -14,18 +15,17 @@ addListener(window,"load",init);
 function requestSMAPI() {
 
 	var request; // request for AJAX
-	var key = "reu|NdmV";
 
 	if (XMLHttpRequest) { request = new XMLHttpRequest(); } // Olika objekt (XMLHttpRequest eller ActiveXObject), beroende på webbläsare
 	else if (ActiveXObject) { request = new ActiveXObject("Microsoft.XMLHTTP"); }
 	else { alert("Tyvärr inget stöd för AJAX, så data kan inte läsas in"); return false; }
 	
-	request.open("GET","https://cactuar.lnu.se/course/1me302/?key=reu|NdmV&controller=location&method=getall&method=getByTags&tags=golf",true);
+	request.open("GET","https://cactuar.lnu.se/course/1me302/?key=reu|NdmV&controller=location&method=getByTags&tags=golf",true);
 	request.send(null); // Skicka begäran till servern
 	request.onreadystatechange = function () { // Funktion för att avläsa status i kommunikationen
 		if ( (request.readyState == 4) && (request.status == 200) ) getSMAPI(request.responseText);
 	};
-}
+} // end requestSMAPI
 // placerar ut markeringar för golfklubbar.
 function getSMAPI(response) {
 
@@ -46,9 +46,38 @@ function getSMAPI(response) {
          
         center: {lat: 57.167925, lng: 15.347129},
         zoom: 8,
-		Color: "#799a24",
-		Weight:	0.1
     });
+
+	    map.set('styles', [
+	  {
+	    featureType: 'road',
+	    elementType: 'geometry',
+	    stylers: [
+	      { color: '#ffffff' },
+	      { weight: 0.8 }
+	    ]
+	  }, {
+	    featureType: 'road',
+	    elementType: 'labels',
+	    stylers: [
+	      { saturation: 100 },
+	      { invert_lightness: true }
+	    ]
+	  }, {
+	    featureType: 'landscape',
+	    elementType: 'geometry.fill',
+	    stylers: [
+	      { color: '#799a24' }
+	    ]
+	  },
+	  {
+	    featureType: 'water',
+	    elementType: 'geometry.fill',
+	    stylers: [
+	      { color: '#286cb1' }
+	    ]
+	  },  
+	]);
 		// går igenom samtliga JSON-objekt som är golfrelaterade (golfklubbar)
 		//samt placerar ut markeringar
 		for (i = 0; i < clubElems.length; i++) {
