@@ -1,42 +1,51 @@
 <!doctype html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>start-test</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<script src="https://maps.googleapis.com/maps/api/js"></script>
-	<script type="text/javascript" src="events.js"></script>
-	<script type="text/javascript" src="clubinfo.js"></script>
-	<style>
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #map {
-        height: 400px;
-        width: 400px;
-      }
-    </style>
 
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>Golfguiden - Golfbanor i Småland och på Öland</title>
+
+<link rel="stylesheet" type="text/css" href="style.css">
+
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script type="text/javascript" src="events.js"></script>
+<script type="text/javascript" src="clubinfomap.js"></script>
+    
 </head>
 
+
 <body>
-	<div>
-		<ul>
-			<li><a href="#" id="clubBtn">Golfklubbar</a></li>
-			<li><a href="#" id="hotelBtn">Boende</a></li>
-			<li><a href="#" id="foodBtn">Mat</a></li>
-			<li><a href="#" id="activitesBtn">Övriga aktiviteter</a></li>
-		</ul>
+	<a href="index.html"><img src="pics/loggan.png" alt="Golfguiden logga" id="logo"></a>
+    
+  	<div id="menu">
+		<a href="index.html"><img src="pics/omoss.png" alt="gå till om oss" id="omoss"></a>
+		<a href="index.html"><img src="pics/minguide.png" alt="gå till min guide" id="minguide"></a>
+		<a href="index.html"><img src="pics/golfklubbar.png" alt="gå till golfklubbar" id="klubbar"></a>
+		<a href="index.html"><img src="pics/startsida.png" alt="gå till startsidan" id="start"></a>
+	</div>
+    
+
+
+	<div id="wrap">
+    
+    	<div>
+            <ul>
+                <li><a href="#" id="clubBtn">Golfklubbar</a></li>
+                <li><a href="#" id="hotelBtn">Boende</a></li>
+                <li><a href="#" id="foodBtn">Mat</a></li>
+                <li><a href="#" id="activitesBtn">Övriga aktiviteter</a></li>
+            </ul>
+		</div>
+
+		<div id="map2">
+		</div>
+
+		<div id="infoDiv">
+    	</div> 
+               
 	</div>
 
-	<div id="map">
-	
-
-	</div>
-	<div id="clubinfoDiv"></div>
-
-	<div id="infoDiv"></div>
 </body>
+
 </html>
