@@ -11,17 +11,41 @@ body { background-image:url(pics/bg_golf3.jpg); background-repeat:no-repeat; bac
 #menu img {width:25%; display:inline; float:right}
 #start:hover, #klubbar:hover, #minguide:hover, #omoss:hover {opacity:0.9; }
 
-#wrap {  background-color:#AFAFAF; width:70%; height:1500px; margin:auto; margin-top:0; }
+#wrap {  background-color:#FFFFFF; width:70%; height:1500px; margin:auto; position:relative;}
+
+
+
+
+
 
 
 /*----------------STARTSIDA-----------------*/
 #startpic {background-image:url(pics/golfpartest.png); background-repeat:no-repeat; background-size:cover; width:100%; margin:auto; height:20%; }
-#starttext {width:50%; float:right; padding:1%; margin-top:4%; margin-right:2%; background-color:#FFFFFF; opacity:0.8; border-radius: 5px 50px; }
-#map { height:25%; width:45%; margin-top:5%; margin-left:auto; margin-right:auto;}
 
-#searchWindow { display:block; width:40%; padding:1%; font-size:16px; font-style:italic; margin-left:auto; margin-right:auto; margin-top:5% }
-#searchButton { display:block; width:20%; margin-left:auto; margin-right:auto }
+#starttext {width:48%; float:right; padding:1%; margin-top:0%; margin-right:2%; background-color:#FFFFFF; opacity:0.8; border-radius: 5px 50px; }
 
+#starttext h1 {text-align: center; margin-top:2%; }
+
+#starttext h4 { text-align:center; }
+
+#starttext p {padding-left:4%;}
+
+#map { height:25%; width:80%; margin-top:15%; margin-left:auto; margin-right:auto; border:solid 3px #4E4E4E; }
+
+#searchWindow { display:block; width:58%; padding:1%; font-size:16px; font-style:italic; margin-left:10%; margin-right:auto; margin-top:-45%; border: solid 2px #4E4E4E; }
+
+#searchButton { display:block; width:17%; margin-left:auto; margin-right:9%; margin-top:-9%; }
+
+.infoBox { background-color: #ADABAB; width: 35%; height:10%; border: solid 3px #4E4E4E; margin-left:10px; margin-top:10px; position:relative; float:left;overflow:hidden;}
+
+.infoBox p { float: right; font-family: Cambria,"Hoefler Text","Liberation Serif",Times,"Times New Roman",serif; font-size: 12px;
+ margin-left: 41%; margin-top: -7%; padding: 2%; }
+
+.infoBox h3 { font-family: Cambria,"Hoefler Text","Liberation Serif",Times,"Times New Roman",serif; margin-left: 56%; margin-top: 2%;}
+
+.rating { float: left; height: 23%; position: absolute; right: 0; text-align: center; top: 0; width: 10%;}
+
+.golfhouse { height: 73%; margin-top: -9%; padding: 2%; position: absolute; width: 39%;}
 
 /*----------------KLUBBAR-------------------*/
 #buttons {padding-right:2%; padding-top:2%; float:right; }

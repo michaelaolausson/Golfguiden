@@ -7,22 +7,39 @@ var searchBtn; // sökknappen
 var enter; // entertangenten
 
 function init() {
-
+	//sökfältet
+	searchInput = document.getElementById("searchWindow");
+	searchInput.value = "sök på golfbana eller stad";
+	searchInput.style.color = "#929292";
+	addListener(searchInput,"focus",removeText);
+	//anrop
 	requestSMAPI();
-
 } // end init
 
 addListener(window,"load",init);
 
-function requestSMAPI() {
+function removeText() {
+	searchInput.value = "";
+	searchInput.style.color = "#000000";
+	removeListener(searchInput,"focus",removeText);
+	addListener(searchInput,"blur",addText);
+} // end removeText
 
+function addText() {
+	searchInput.value = "sök på golfbana eller stad";
+	searchInput.style.color = "#929292";
+	addListener(searchInput,"focus",removeText);
+	removeListener(searchInput,"blur",addText);
+} // end addText
+
+function requestSMAPI() {
 	var request; // request for AJAX
 
 	if (XMLHttpRequest) { request = new XMLHttpRequest(); } // Olika objekt (XMLHttpRequest eller ActiveXObject), beroende på webbläsare
 	else if (ActiveXObject) { request = new ActiveXObject("Microsoft.XMLHTTP"); }
 	else { alert("Tyvärr inget stöd för AJAX, så data kan inte läsas in"); return false; }
 	
-	request.open("GET","https://cactuar.lnu.se/course/1me302/?key=reu|NdmV&controller=location&method=getByTags&tags=golf",true);
+	request.open("GET","https://cactuar.lnu.se/course/1me302/?key=" + key + "&controller=location&method=getByTags&tags=golf",true);
 	request.send(null); // Skicka begäran till servern
 	request.onreadystatechange = function () { // Funktion för att avläsa status i kommunikationen
 		if ( (request.readyState == 4) && (request.status == 200) ) getSMAPI(request.responseText);
@@ -30,31 +47,24 @@ function requestSMAPI() {
 } // end requestSMAPI
 // placerar ut markeringar för golfklubbar.
 function getSMAPI(response) {
-
 	var i; // loop-var
 	var map; // kartobjekt
 	var marker; // marker object
 	var myMarkers; // marker array
 	var myLatLng; // koordinater
-
-
 	response = JSON.parse(response);
-
 	clubElems = response.payload;
-
 	myMarkers = [];
-
 	map = new google.maps.Map(document.getElementById('map'), {
          
         center: {lat: 57.167925, lng: 15.347129},
         zoom: 7,
-
     });
+
 //-- kod från https://developers.google.com/maps/documentation/javascript/examples/places-searchbox med ändringar för referens av sökruta. --//
-   
+    
     // Create the search box and link it to the UI element.
-  	var input = document.getElementById('searchWindow');
- 	var searchBox = new google.maps.places.SearchBox(input);
+ 	var searchBox = new google.maps.places.SearchBox(searchInput); // <-- sökruta anpassad till projektets tjänst
   		// Bias the SearchBox results towards current map's viewport.
   	map.addListener('bounds_changed', function() {
     searchBox.setBounds(map.getBounds());
@@ -81,7 +91,7 @@ function getSMAPI(response) {
     var bounds = new google.maps.LatLngBounds();
     places.forEach(function(place) {
       var icon = {
-        url: "pics/map_icons/here.png", 
+        url: "pics/map_icons/here.png", // <-- ändring av ikon.
         size: new google.maps.Size(71, 71),
         origin: new google.maps.Point(0, 0),
         anchor: new google.maps.Point(17, 34),
@@ -104,74 +114,36 @@ function getSMAPI(response) {
       }
     });
     map.fitBounds(bounds);
+
   }); // slut på kod från https://developers.google.com/maps/documentation/javascript/examples/places-searchbox med ändringar för referens av sökruta.
-
+	// kartstil. Ändring av färg på landmassa, vägar och vatten. 
 	map.set('styles', [
-
-	  {
-	    featureType: 'road',
-	    elementType: 'geometry',
-	    stylers: [
-	      { color: '#ffffff' },
-	      { weight: 0.8 }
-	    ]
-	  }, {
-	    featureType: 'road',
-	    elementType: 'labels',
-	    stylers: [
-	      { saturation: 100 },
-	      { invert_lightness: true }
-	    ]
-	  }, {
-	    featureType: 'landscape',
-	    elementType: 'geometry.fill',
-	    stylers: [
-	      { color: '#799a24' }
-	    ]
-	  },
-	  {
-	    featureType: 'water',
-	    elementType: 'geometry.fill',
-	    stylers: [
-	      { color: '#4a6c8e' }
-	    ]
-	  },  
+		{featureType: 'road', elementType: 'geometry',stylers: [{ color:'#ffffff'},{weight: 0.8}]}, 
+		{featureType: 'road',elementType: 'labels',stylers: [{ saturation: 100 },{invert_lightness: true}]}, 
+		{featureType: 'landscape',elementType: 'geometry.fill',stylers: [{color: '#799a24'}] },
+		{featureType: 'water',elementType: 'geometry.fill',stylers:[{color: '#4a6c8e'}]},  
 	]);
-		// går igenom samtliga JSON-objekt som är golfrelaterade (golfklubbar)
-		//samt placerar ut markeringar
-		for (i = 0; i < clubElems.length; i++) {
-
-			newMarker = new google.maps.Marker;
-			myMarkers.push(newMarker);
-
-			myLatLng = {lat: Number(clubElems[i].latitude), lng: Number(clubElems[i].longitude)};
-
-			myMarkers[i] = new google.maps.Marker ({
-			position: myLatLng,
-			map:map,
-			title: clubElems[i].name,
-			animation: google.maps.Animation.DROP,
-			id: clubElems[i].id,
-			icon: "pics/map_icons/golf.png"
-
-			});
-
-			google.maps.event.addListener(myMarkers[i], 'click', loadClubPage)
-			
-		}
+	// går igenom samtliga JSON-objekt som är golfrelaterade (golfklubbar)
+	//samt placerar ut markeringar
+	for (i = 0; i < clubElems.length; i++) {
+		newMarker = new google.maps.Marker;
+		myMarkers.push(newMarker);
+		myLatLng = {lat: Number(clubElems[i].latitude), lng: Number(clubElems[i].longitude)};
+		myMarkers[i] = new google.maps.Marker ({
+		position: myLatLng,
+		map:map,
+		title: clubElems[i].name,
+		animation: google.maps.Animation.DROP,
+		id: clubElems[i].id,
+		icon: "pics/map_icons/golf.png"
+		});
+	google.maps.event.addListener(myMarkers[i], 'click', loadClubPage)
+	}
 } // end getSMAPI
 
 	//sparar klubbens unika ID i web storage och laddar in ny sida för klubbinformation - lämnar startsidan
 function loadClubPage() {
-
 	clubID = this.id;
-
 	localStorage.clubID = clubID;
-
 	window.location.href = "clubinfo.html"; // ladda sida för klubbinformation
 } // end loadClubPage
-
-function searchClub() {
-
-
-}
