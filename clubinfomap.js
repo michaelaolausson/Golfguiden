@@ -1,6 +1,5 @@
 // Michaela Olausson VT 2016
 // globala variabler
-
 //var myKey =  "AIzaSyA4sq08oYLsb2ZXGE6AbNHhQfrSFryVEsQ"; // google Maps API key
 var map; // kartobjektet
 //knappar
