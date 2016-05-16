@@ -8,7 +8,8 @@
 
 <link rel="stylesheet" type="text/css" href="style.css">
 
-<script src="http://maps.googleapis.com/maps/api/js?v=3&sensor=false&amp;libraries=places&key=AIzaSyA4sq08oYLsb2ZXGE6AbNHhQfrSFryVEsQ"></script>
+<script async defer
+src="http://maps.googleapis.com/maps/api/js?v=3&sensor=false&amp;libraries=places&key=AIzaSyA4sq08oYLsb2ZXGE6AbNHhQfrSFryVEsQ"></script>
 <script type="text/javascript" src="events.js"></script>
 <script type="text/javascript" src="start.js"></script>
     
@@ -16,7 +17,7 @@
 
 
 <body>
-	<a href="index.html"><img src="pics/logga golf.png" alt="Golfguiden logga" id="logo"></a>
+	<a href="index.html"><img src="pics/golfguiden_logo.png" alt="Golfguiden logga" id="logo"></a>
     
   	<div id="menu">
 		<a href="about.html"><img src="pics/omoss.png" alt="gå till om oss" id="omoss"></a>
@@ -28,7 +29,7 @@
 	<div id="wrap">
     
     
-    
+   <main>
     	<div id="startpic">
         <div id="starttext">
         <h1>Välkommen till Golfguiden!</h1>
@@ -39,25 +40,28 @@
         </div>
         </div>
         
-    
-    	<div id="map">
-		</div>
-	
-      <form>
-            <input type="text" id="searchWindow" value="sök på golfbana eller stad">
+    <form>
+            <input type="text" id="searchWindow" >
             <br>
             <p> <a href=""><img src="pics/sok.png" alt="sökknapp" id="searchButton"></a></p>
     
         </form>
-    
+        
+    	<div id="map">
+		</div>
+	
+    	
+      
+    <div id="resElem">      
+    </div>
 
-
-
-	</div>
+	</main>
   
-    
+ </div>   
    
 
 </body>
-
+<footer>
+<p>Golfguiden</p>
+</footer>
 </html>

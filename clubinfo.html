@@ -10,44 +10,69 @@
 
 <script src="https://maps.googleapis.com/maps/api/js"></script>
 <script type="text/javascript" src="events.js"></script>
+
 <script type="text/javascript" src="clubinfomap.js"></script>
-    
+<script type="text/javascript" src="slideshow.js"></script>   
 </head>
 
 
 <body>
-	<a href="index.html"><img src="pics/loggan.png" alt="Golfguiden logga" id="logo"></a>
+	<a href="index.html"><img src="pics/golfguiden_logo.png" alt="Golfguiden logga" id="logo"></a>
     
   	<div id="menu">
-		<a href="index.html"><img src="pics/omoss.png" alt="gå till om oss" id="omoss"></a>
-		<a href="index.html"><img src="pics/minguide.png" alt="gå till min guide" id="minguide"></a>
-		<a href="index.html"><img src="pics/golfklubbar.png" alt="gå till golfklubbar" id="klubbar"></a>
+		<a href="about.html"><img src="pics/omoss.png" alt="gå till om oss" id="omoss"></a>
+		<a href="guide.html"><img src="pics/minguide.png" alt="gå till min guide" id="minguide"></a>
+		<a href="clubs.html"><img src="pics/golfklubbar.png" alt="gå till golfklubbar" id="klubbar"></a>
 		<a href="index.html"><img src="pics/startsida.png" alt="gå till startsidan" id="start"></a>
 	</div>
     
-
-
-	<div id="wrap">
+<div id="wrap">
     
-    	<div>
+    <div id="coursetext"></div>
+	
+    <div id="courseinfo"> </div>
+	
+    
+    
+		<div id="bildruta">
+      		<div id="bildknapp1">
+                <img src="pics/bildspel/arrow_left.png" alt="föregående bild">
+            </div>
+        
+            <div id="bildknapp2">
+                <img src="pics/bildspel/arrow_right.png" alt="nästa bild">    
+            </div>
+		</div>
+    	
+        
+        <div id="map2">
+		</div> 
+        
+    
+   	  <div id="mapButtons">
             <ul>
-                <li><a href="#" id="clubBtn">Golfklubbar</a></li>
-                <li><a href="#" id="hotelBtn">Boende</a></li>
-                <li><a href="#" id="foodBtn">Mat</a></li>
-                <li><a href="#" id="activitesBtn">Övriga aktiviteter</a></li>
+            	<li><a href="#"><img src="pics/map_buttons/boende.png" alt="visa närliggande golfklubbar" id="hotelBtn"></a></li>
+                <li><a href="#"><img src="pics/map_buttons/golfklubbar.png" alt="visa närliggande golfklubbar" id="clubBtn"></a></li>
+                <li><a href="#"><img src="pics/map_buttons/sevardheter.png" alt="visa närliggande golfklubbar" id="activitesBtn"></a></li>
+                <li><a href="#"><img src="pics/map_buttons/restauranger.png" alt="visa närliggande golfklubbar" id="foodBtn"></a></li>
+                
             </ul>
 		</div>
 
-		<div id="map2">
-		</div>
-
-		<div id="infoDiv">
-			<div id="coursetext"></div><div id="extrainfo"></div>
-    	</div> 
-
-               
-	</div>
-
+		
+        
+        
+        <div id="extrainfo">
+        </div>
+        
+        
+       	<div id="disqus">
+			<script>
+            	addDisqus();
+            </script>
+       	</div>        
+	
+    </div>
 
 </body>
 

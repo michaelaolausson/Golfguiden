@@ -42,24 +42,24 @@ function getSMAPI(response) {
 			h3.appendChild(t);
 			infoBox.appendChild(h3);
 			// Beskrivning
-			clubDesc = document.createTextNode(JSONobjects[i].description);
+			/*clubDesc = document.createTextNode(JSONobjects[i].description);
 			var p = document.createElement("p");
 			p.className = "clubDesc";
 			p.appendChild(clubDesc);
-			infoBox.appendChild(clubDesc);
+			infoBox.appendChild(clubDesc);*/
 			//betyg
-			/*var r = document.createTextNode(JSONobjects[i].ratings);
+			var r = document.createTextNode(JSONobjects[i].ratings);
 			var pRate = document.createElement("p");
 			pRate.className = "rating";
 			pRate.appendChild(r);
-			infoBox.appendChild(pRate);*/
+			infoBox.appendChild(pRate);
 			var clubPic = document.createElement("img");
 			clubPic.src = "pics/klubbhus.png"; // ska bytas mot bild via JSON-fil.
 			clubPic.className = "golfhouse";
 			clubPic.alt = "växjö klubbhus"; //ändras till payload.title sen kanske?
 			var golfballPic = document.createElement("img");
 			golfballPic.src = "pics/golfboll.png";
-			golfballPic.className = "rating";
+			golfballPic.className = "ratingBall";
 			golfballPic.alt = "bild golfboll";
 
 			infoBox.appendChild(golfballPic);

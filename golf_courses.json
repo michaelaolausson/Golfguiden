@@ -1,0 +1,930 @@
+
+{
+	"golf": "Golfbanor i Småland & Öland",
+	
+	"courses": [
+	
+	{
+		"id": "1",
+		"name": "A6 Golfklubb",
+		"short": "a6",
+		"pics": 		[	{	"url": "bilder/a6/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/a6/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/a6/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"yes",
+		"nineholes":"yes",
+		"paynplay":"yes",
+		"restaurant":"yes",
+		"golfcar":"yes"
+		
+	
+	},
+	
+	{
+		"id": "2",
+		"name": "Alvesta Golfklubb",
+		"short": "alvesta",
+		"pics": 		[	{	"url": "bilder/alvesta/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/alvesta/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/alvesta/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"yes",
+		"nineholes":"no",
+		"paynplay":"no",
+		"restaurant":"yes",
+		"golfcar":"yes"
+		
+	},
+	
+	{
+		"id": "3",
+		"name": "Binga Golf",
+		"short": "binga",
+		"pics": 		[	{	"url": "bilder/binga/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/binga/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/binga/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"no",
+		"nineholes":"yes",
+		"paynplay":"yes",
+		"restaurant":"no",
+		"golfcar":"no"
+	
+	},
+	
+	{
+		"id": "4",
+		"name": "Byxelkroks Golfklubb",
+		"short": "byxelkrok",
+		"pics": 		[	{	"url": "bilder/byxelkrok/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/byxelkrok/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/byxelkrok/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"yes",
+		"nineholes":"yes",
+		"paynplay":"no",
+		"restaurant":"yes",
+		"golfcar":"no"
+		
+	},
+	
+	{
+		"id": "5",
+		"name": "Ekerum Golf & Resort",
+		"short": "ekerum",
+		"pics": 		[	{	"url": "bilder/ekerum/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/ekerum/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/ekerum/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"yes",
+		"nineholes":"yes",
+		"paynplay":"yes",
+		"restaurant":"yes",
+		"golfcar":"yes"
+		
+	},
+	
+	{
+		"id": "6",
+		"name": "Eksjö Golfklubb",
+		"short": "eksjö",
+		"pics": 		[	{	"url": "bilder/eksjö/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/eksjö/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/eksjö/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"yes",
+		"nineholes":"no",
+		"paynplay":"no",
+		"restaurant":"yes",
+		"golfcar":"no"
+		
+	},
+	
+	{
+		"id": "7",
+		"name": "Emmaboda GK",
+		"short": "emmaboda",
+		"pics": 		[	{	"url": "bilder/emmaboda/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/emmaboda/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/emmaboda/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"yes",
+		"nineholes":"no",
+		"paynplay":"no",
+		"restaurant":"yes",
+		"golfcar":"no"
+		
+	},
+	
+	{
+		"id": "8",
+		"name": "Figeholm Golf & Country Club",
+		"short": "figeholm",
+		"pics": 		[	{	"url": "bilder/figeholm/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/figeholm/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/figeholm/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"no",
+		"nineholes":"yes",
+		"paynplay":"no",
+		"restaurant":"no",
+		"golfcar":"yes"
+		
+	},
+	
+	{
+		"id": "9",
+		"name": "Glasrikets Golfklubb",
+		"short": "glasriket",
+		"pics": 		[	{	"url": "bilder/glasriket/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/glasriket/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/glasriket/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"yes",
+		"nineholes":"no",
+		"paynplay":"yes",
+		"restaurant":"yes",
+		"golfcar":"yes"
+		
+	},
+	
+	{
+		"id": "10",
+		"name": "Gränna Golfklubb",
+		"short": "granna",
+		"pics": 		[	{	"url": "bilder/granna/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/granna/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/granna/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"yes",
+		"nineholes":"no",
+		"paynplay":"no",
+		"restaurant":"yes",
+		"golfcar":"yes"
+		
+	},
+	
+	{
+		"id": "11",
+		"name": "Grönhögen Golf",
+		"short": "gronhogen",
+		"pics": 		[	{	"url": "bilder/gronhogen/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/gronhogen/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/gronhogen/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"yes",
+		"nineholes":"no",
+		"paynplay":"no",
+		"restaurant":"yes",
+		"golfcar":"yes"
+		
+	},
+	
+	{
+		"id": "12",
+		"name": "Götaströms Golfklubb",
+		"short": "gotastrom",
+		"pics": 		[	{	"url": "bilder/gotastrom/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/gotastrom/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/gotastrom/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"yes",
+		"nineholes":"no",
+		"paynplay":"yes",
+		"restaurant":"yes",
+		"golfcar":"yes"
+		
+	},
+	
+	{
+		"id": "13",
+		"name": "Isaberg Golfklubb",
+		"short": "isaberg",
+		"pics": 		[	{	"url": "bilder/isaberg/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/isaberg/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/isaberg/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"yes",
+		"nineholes":"no",
+		"paynplay":"yes",
+		"restaurant":"yes",
+		"golfcar":"yes"
+		
+	},
+	
+	{
+		"id": "14",
+		"name": "Jönköpings Golfklubb",
+		"short": "jonkoping",
+		"pics": 		[	{	"url": "bilder/jonkoping/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/jonkoping/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/jonkoping/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"yes",
+		"nineholes":"no",
+		"paynplay":"yes",
+		"restaurant":"yes",
+		"golfcar":"yes"
+		
+	},
+	
+	{
+		"id": "15",
+		"name": "Kalmar Golfklubb",
+		"short": "kalmar",
+		"pics": 		[	{	"url": "bilder/kalmar/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/kalmar/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/kalmar/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"yes",
+		"nineholes":"no",
+		"paynplay":"no",
+		"restaurant":"yes",
+		"golfcar":"yes"
+		
+	},
+	
+	{
+		"id": "16",
+		"name": "Lagans Golfklubb",
+		"short": "lagan",
+		"pics": 		[	{	"url": "bilder/lagan/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/lagan/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/lagan/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"yes",
+		"nineholes":"yes",
+		"paynplay":"yes",
+		"restaurant":"yes",
+		"golfcar":"yes"
+		
+	},
+	
+	{
+		"id": "17",
+		"name": "Lanna Golfkubb",
+		"short": "lanna",
+		"pics": 		[	{	"url": "bilder/lanna/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/lanna/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/lanna/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"yes",
+		"nineholes":"no",
+		"paynplay":"no",
+		"restaurant":"yes",
+		"golfcar":"yes"
+		
+	},
+	
+	{
+		"id": "18",
+		"name": "Lysingbadets Golfklubb",
+		"short": "lysingbadet",
+		"pics": 		[	{	"url": "bilder/lysingbadet/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/lysingbadet/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/lysingbadet/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"no",
+		"nineholes":"yes",
+		"paynplay":"yes",
+		"restaurant":"no",
+		"golfcar":"no"
+		
+	},
+	
+	{
+		"id": "19",
+		"name": "Mönsterås Golfklubb",
+		"short": "monsteras",
+		"pics": 		[	{	"url": "bilder/monsteras/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/monsteras/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/monsteras/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"no",
+		"nineholes":"yes",
+		"paynplay":"yes",
+		"restaurant":"no",
+		"golfcar":"yes"
+		
+	},
+	
+	{
+		"id": "20",
+		"name": "Möre Golf",
+		"short": "more",
+		"pics": 		[	{	"url": "bilder/more/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/more/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/more/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"yes",
+		"nineholes":"no",
+		"paynplay":"no",
+		"restaurant":"yes",
+		"golfcar":"yes"
+		
+	},
+	
+	{
+		"id": "21",
+		"name": "Nybro Golfklubb",
+		"short": "nybro",
+		"pics": 		[	{	"url": "bilder/nybro/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/nybro/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/nybro/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"yes",
+		"nineholes":"no",
+		"paynplay":"no",
+		"restaurant":"yes",
+		"golfcar":"no"
+		
+	},
+	
+	{
+		"id": "22",
+		"name": "Oskarshamns Golfklubb",
+		"short": "oskarshamn",
+		"pics": 		[	{	"url": "bilder/oskarshamn/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/oskarshamn/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/oskarshamn/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"yes",
+		"nineholes":"no",
+		"paynplay":"yes",
+		"restaurant":"yes",
+		"golfcar":"no"
+		
+	},
+	
+	{
+		"id": "23",
+		"name": "Ramkvilla Golfklubb",
+		"short": "ramkvilla",
+		"pics": 		[	{	"url": "bilder/ramkvilla/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/ramkvilla/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/ramkvilla/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"no",
+		"nineholes":"yes",
+		"paynplay":"no",
+		"restaurant":"no",
+		"golfcar":"no"
+	
+	},
+	
+	{
+		"id": "24",
+		"name": "Reftele Golfklubb",
+		"short": "reftele",
+		"pics": 		[	{	"url": "bilder/reftele/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/reftele/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/reftele/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"yes",
+		"nineholes":"no",
+		"paynplay":"no",
+		"restaurant":"yes",
+		"golfcar":"yes"
+		
+	},
+	
+	{
+		"id": "25",
+		"name": "Rockatorp Golfklubb",
+		"short": "rockatorp",	
+		"pics": 		[	{	"url": "bilder/rockatorp/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/rockatorp/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/rockatorp/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"no",
+		"nineholes":"yes",
+		"paynplay":"yes",
+		"restaurant":"no",
+		"golfcar":"no"
+		
+	},
+	
+	{
+		"id": "26",
+		"name": "Ryfors Golfklubb",
+		"short": "ryfors",
+		"pics": 		[	{	"url": "bilder/ryfors/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/ryfors/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/ryfors/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"yes",
+		"nineholes":"no",
+		"paynplay":"no",
+		"restaurant":"no",
+		"golfcar":"yes"
+		
+	},
+	
+	{
+		"id": "27",
+		"name": "Sand Golf Club",
+		"short": "sand",
+		"pics": 		[	{	"url": "bilder/sand/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/sand/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/sand/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"yes",
+		"nineholes":"no",
+		"paynplay":"no",
+		"restaurant":"yes",
+		"golfcar":"yes"
+		
+	},
+	
+	{
+		"id": "28",
+		"name": "Saxnäs Golfklubb",
+		"short": "saxnas",
+		"pics": 		[	{	"url": "bilder/saxnas/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/saxnas/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/saxnas/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"yes",
+		"nineholes":"no",
+		"paynplay":"no",
+		"restaurant":"yes",
+		"golfcar":"no"
+		
+	},
+	
+	{
+		"id": "29",
+		"name": "Skinnarebo Golf & Country Club",
+		"short": "skinnarebo",
+		"pics": 		[	{	"url": "bilder/skinnarebo/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/skinnarebo/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/skinnarebo/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"yes",
+		"nineholes":"yes",
+		"paynplay":"yes",
+		"restaurant":"yes",
+		"golfcar":"yes"
+		
+	},
+	
+	{
+		"id": "30",
+		"name": "Tobo Golfklubb",
+		"short": "tobo",
+		"pics": 		[	{	"url": "bilder/tobo/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/tobo/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/tobo/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"yes",
+		"nineholes":"no",
+		"paynplay":"yes",
+		"restaurant":"yes",
+		"golfcar":"no"
+		
+	},
+	
+	{
+		"id": "31",
+		"name": "Tranås Golfklubb",
+		"short": "tranas",
+		"pics": 		[	{	"url": "bilder/tranas/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/tranas/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/tranas/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"yes",
+		"nineholes":"yes",
+		"paynplay":"no",
+		"restaurant":"yes",
+		"golfcar":"no"
+		
+	},
+	
+	{
+		"id": "32",
+		"name": "Uppvidinge Golfklubb",
+		"short": "uppvidinge",
+		"pics": 		[	{	"url": "bilder/uppvidinge/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/uppvidinge/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/uppvidinge/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"no",
+		"nineholes":"yes",
+		"paynplay":"yes",
+		"restaurant":"no",
+		"golfcar":"no"
+		
+	},
+	
+	{
+		"id": "33",
+		"name": "Vetlanda Golf AB",
+		"short": "vetlanda",
+		"pics": 		[	{	"url": "bilder/vetlanda/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/vetlanda/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/vetlanda/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"yes",
+		"nineholes":"yes",
+		"paynplay":"yes",
+		"restaurant":"yes",
+		"golfcar":"no"
+		
+	},
+	
+	{
+		"id": "34",
+		"name": "Vimmerby Golfklubb",
+		"short": "vimmerby",
+		"pics": 		[	{	"url": "bilder/vimmerby/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/vimmerby/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/vimmerby/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"no",
+		"nineholes":"yes",
+		"paynplay":"yes",
+		"restaurant":"no",
+		"golfcar":"no"
+		
+	},
+	
+	{
+		"id": "35",
+		"name": "Visingsö Golfklubb",
+		"short": "visingso",
+		"pics": 		[	{	"url": "bilder/visingso/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/visingso/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/visingso/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"no",
+		"nineholes":"yes",
+		"paynplay":"no",
+		"restaurant":"no",
+		"golfcar":"no"
+		
+	},
+	
+	{
+		"id": "36",
+		"name": "Västerviks Golfklubb",
+		"short": "vastervik",
+		"pics": 		[	{	"url": "bilder/vastervik/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/vastervik/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/vastervik/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"yes",
+		"nineholes":"no",
+		"paynplay":"no",
+		"restaurant":"yes",
+		"golfcar":"yes"
+		
+	},
+	
+	{
+		"id": "37",
+		"name": "Växjö Golfklubb",
+		"short": "vaxjo",
+		"pics": 		[	{	"url": "bilder/vaxjo/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/vaxjo/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/vaxjo/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"yes",
+		"nineholes":"no",
+		"paynplay":"no",
+		"restaurant":"yes",
+		"golfcar":"yes"
+		
+	},
+	
+	{
+		"id": "38",
+		"name": "Wiredaholm Golf & Konferens",
+		"short": "wiredaholm",
+		"pics": 		[	{	"url": "bilder/wiredaholm/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/wiredaholm/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/wiredaholm/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"yes",
+		"nineholes":"yes",
+		"paynplay":"yes",
+		"restaurant":"yes",
+		"golfcar":"yes"
+	
+	},
+	
+	{
+		"id": "39",
+		"name": "Älmhults Golfklubb",
+		"short": "almhult",
+		"pics": 		[	{	"url": "bilder/almhult/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/almhult/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/almhult/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"yes",
+		"nineholes":"no",
+		"paynplay":"no",
+		"restaurant":"no",
+		"golfcar":"no"
+		
+	},
+	
+	{
+		"id": "40",
+		"name": "Ölands Golfklubb",
+		"short": "oland",
+		"pics": 		[	{	"url": "bilder/oland/bild1.jpg",
+							"pictext": "Text till bild 1"
+						},
+						{	"url": "bilder/oland/bild2.jpg",
+							"pictext": "Text till bild 2"
+						},
+						{	"url": "bilder/oland/bild3.jpg",
+							"pictext": "Text till bild 3"
+						}
+					],
+		"range": "yes",
+		"eighteenholes":"yes",
+		"nineholes":"no",
+		"paynplay":"no",
+		"restaurant":"yes",
+		"golfcar":"yes"
+		
+	}
+	
+	
+	]
+}
