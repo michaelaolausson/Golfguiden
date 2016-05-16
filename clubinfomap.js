@@ -1,4 +1,3 @@
-// Michaela Olausson VT 2016
 // globala variabler
 //var myKey =  "AIzaSyA4sq08oYLsb2ZXGE6AbNHhQfrSFryVEsQ"; // google Maps API key
 var map; // kartobjektet
@@ -9,6 +8,7 @@ var hotelBtn; // knapp för boende
 var activitiesBtn; // knapp för övriga aktiviterer
 var myMarkers = []; // klubbmarkeringar.
 var choosenMarker; // speciell markör för vald klubb
+var choosenClub; // club med id från web storage (sparat från startsidan.)
 var clubMarkers;
 var foodMarkers;
 var hotelMarkers;
@@ -35,7 +35,6 @@ function requestID() {
 	var request; // request for AJAX
 	var key = "reu|NdmV";
 	var response; // JSONdata
-	var choosenClub; // club med id från web storage (sparat från startsidan.)
 	var myLatLng; // koordinater för vald klubb.
 	if (XMLHttpRequest) {request = new XMLHttpRequest();} // Olika objekt (XMLHttpRequest eller ActiveXObject), beroende på webbläsare
 	else if (ActiveXObject) {request = new ActiveXObject("Microsoft.XMLHTTP");}
@@ -57,9 +56,20 @@ function requestID() {
 				{featureType: 'landscape',elementType: 'geometry.fill',stylers: [{color: '#799a24'}] },
 				{featureType: 'water',elementType: 'geometry.fill',stylers:[{color: '#4a6c8e'}]},  
 			]);
+
+			addClubInfo();
 		}
 	}
 }// end requestID
+//hämtar info från SMAPI och lägger i passande div.
+function addClubInfo() {
+
+	var description = document.getElementById("coursetext");//HTML-element för description.
+	var extrainfo = document.getElementById("extrainfo");
+	coursetext.innerHTML = "<h2>" + choosenClub.name + "</h2>" + choosenClub.description;
+	extrainfo.innerHTML = "<b>Öppetider</b>" + "<br>" + choosenClub.opening_time + "<br>" + choosenClub.closing_time;
+
+}
 // hämtar JSON-object från SMAPI med taggar baserat på vilken knapp som klickats på. 
 function requestSMAPI(callback, tags) {
 	var request; // request for AJAX
@@ -173,6 +183,7 @@ function hideActivitiesMarkers() {
 	removeListener(activitiesBtn,"click",hideActivitiesMarkers);
 }
  //-- GEMENSAMMA -- FUNKTIONER --//
+ // JSONobjekten skickas med till denna funktion som skapar markeringarna.
 function createMarkers(smapiObjects, pic) {
 	var markers = [];
 	for (var i = 0; i < smapiObjects.length; i++) {
@@ -182,7 +193,7 @@ function createMarkers(smapiObjects, pic) {
 			title: smapiObjects[i].name,
 			animation: google.maps.Animation.DROP,
 			icon: pic });
-
+		
 		markers.push(newMarker);
 	}
 	return markers;
@@ -198,3 +209,5 @@ function hideMarkers(markers) {
 		markers[i].setMap(null);
 	}
 } // end hideMarkers
+//lägger till ett kommentarsfält längst ner på varje klubbsida. 
+

@@ -163,7 +163,7 @@ function requestNearbyClubs() {
 	if (XMLHttpRequest) { request = new XMLHttpRequest(); } // Olika objekt (XMLHttpRequest eller ActiveXObject), beroende på webbläsare
 	else if (ActiveXObject) { request = new ActiveXObject("Microsoft.XMLHTTP"); }
 	else { alert("Tyvärr inget stöd för AJAX, så data kan inte läsas in"); return false; }
-	request.open("GET","https://cactuar.lnu.se/course/1me302/?key=" + key + "&controller=location&method=getByLatLng&lat=" + placePosition.lat + "&lng=" + placePosition.lng + "&radius=150&tags=golf",true);
+	request.open("GET","https://cactuar.lnu.se/course/1me302/?key=" + key + "&controller=location&method=getByLatLng&lat=" + placePosition.lat + "&lng=" + placePosition.lng + "&radius=100&tags=golf",true);
 	request.send(null); // Skicka begäran till servern
 	request.onreadystatechange = function () { // Funktion för att avläsa status i kommunikationen
 		if ( (request.readyState == 4) && (request.status == 200) ) getNearbyClubs(request.responseText);
@@ -177,9 +177,47 @@ function getNearbyClubs(response) {
 	nearbyClubsElems = response.payload;
 
 	var resElem = document.getElementById("resDiv"); // divElem för sökresultat. Närliggande klubbar.
+	infoBoxElems = document.getElementsByClassName("infoBox");
 
-	for (var i = 0; i < nearbyClubsElems.length; i++) {
 
-		alert(nearbyClubsElems[i].name)
+	for (var i = 0; i < infoBoxElems.length; i++) {
+
+		document.getElementById("wrap").removeChild(infoBoxElems[i]);
 	}
+		for (var i = 0; i < nearbyClubsElems.length; i++) {
+
+		infoBox = document.createElement("div");
+				infoBox.className = "infoBox";
+				var t = document.createTextNode(nearbyClubsElems[i].name);
+				//titel - Element
+				var h3 = document.createElement("h3");
+				h3.className = "clubTitle";
+				h3.appendChild(t);
+				infoBox.appendChild(h3);
+				// Beskrivning
+				/*clubDesc = document.createTextNode(nearbyClubsElems[i].description);
+				var p = document.createElement("p");
+				p.className = "clubDesc";
+				p.appendChild(clubDesc);
+				infoBox.appendChild(clubDesc);*/
+				//betyg
+				var r = document.createTextNode(JSONobjects[i].ratings);
+				var pRate = document.createElement("p");
+				pRate.className = "ratingNumber";
+				pRate.appendChild(r);
+				infoBox.appendChild(pRate);
+				var clubPic = document.createElement("img");
+				clubPic.src = "pics/klubbhus.png"; // ska bytas mot bild via JSON-fil.
+				clubPic.className = "golfhouse";
+				clubPic.alt = "växjö klubbhus"; //ändras till payload.title sen kanske?
+				var golfballPic = document.createElement("img");
+				golfballPic.src = "pics/golfboll.png";
+				golfballPic.className = "rating";
+				golfballPic.alt = "bild golfboll";
+
+				infoBox.appendChild(golfballPic);
+				infoBox.appendChild(clubPic);
+
+				document.getElementById("wrap").appendChild(infoBox); // lägger infoelementen i div-elementet med id wrap. 
+		}
 }
