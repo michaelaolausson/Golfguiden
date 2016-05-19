@@ -8,11 +8,11 @@ body { background-image:url(pics/bg_golf3.jpg); background-repeat:no-repeat; bac
 
 #logo { width: 27%; margin-left:18%; margin-top:2%; }
 
-#menu {width:30%; float:right; margin-right:17.7%; margin-top:3%; }
+#menu {width:34%; float:right; margin-right:17.7%; margin-top:3%; }
 #menu img {width:25%; display:inline; float:right}
 #start:hover, #klubbar:hover, #minguide:hover, #omoss:hover {opacity:0.9; }
 
-#wrap { background-color:#FFFFFF; width:64%; height:100%; margin-left:18%; margin-right:18%; margin-top:1%; }
+#wrap { background-color:#FFFFFF; width:64%; min-height:100%; margin-left:18%; margin-right:18%; margin-top:1%; padding-bottom:5%; }
 
 
 
@@ -21,25 +21,26 @@ body { background-image:url(pics/bg_golf3.jpg); background-repeat:no-repeat; bac
 
 
 /*----------------STARTSIDA-----------------*/
-#startpic {background-image:url(pics/golfpartest.png); background-repeat:no-repeat; background-size:cover; width:100%; margin:auto; height:40%; }
+#startpic {background-image:url(pics/golfpartest.png); background-repeat:no-repeat; background-size:cover; width:64%; margin:auto; position:absolute; }
 
-#starttext { width:45%; height:75%; float:right; padding:1%; margin-top:2%; margin-right:2%; background-color:#FFFFFF; opacity:0.8; border-radius: 5px 50px; }
+#starttext { width:45%; float:right; padding:1%; margin-top:2%; margin-right:2%; margin-bottom:2%; background-color:#FFFFFF; opacity:0.8; border-radius: 5px 50px; }
 
 #starttext p { font-size:90%;  }
 #starttext h1 {text-align: center; margin-top:2%; }
 
 #starttext h4 { text-align:center;  }
 
-#map { display:block; height:40%; width:80%; margin-top:2%; margin-left:auto; margin-right:auto; border:solid 3px #4E4E4E; }
+#map {  position:fixed; height:300px; width:80%; margin-top:1%; margin-left:auto; margin-right:auto; border:solid 3px #4E4E4E; }
 
-
-#searchWindow {  width:58%; padding:1%; font-size:16px; font-style:italic; margin-left:9%; margin-top:7%; border: solid 2px #4E4E4E;  }
-#searchButton { margin-left:69%; margin-top:-6.2%; width:21%; padding-bottom:1%; }
+#searchElem { display:inline-block; margin-top:30%; width:80%; margin-left:10%; }
+#searchWindow { float:left; width:74%; padding:1%; font-size:16px; font-style:italic; margin-left:0; border: solid 2px #4E4E4E;  }
+#searchButton { float:right; margin-right:-1%; margin-top:-1%; width:23%;  }
+#resElem {  }
 
 
 
 /*------------Resultatrutor (till både startsidan och klubblistan)--------------*/
-.infoBox { background-color: #ADABAB; width: 30%; height:15%; border: solid 4px #4E4E4E; margin-left:1%; margin-right:1%; margin-top:5%; 
+.infoBox { background-color: #ADABAB; width: 30%; height:150px; border: solid 4px #4E4E4E; margin-left:1%; margin-right:1%; margin-top:5%; 
 position:relative; float:left; }
 
 .infoBox p { float:right; width:5%; font-family: Cambria,"Hoefler Text","Liberation Serif",Times,"Times New Roman",serif; font-size: 150%;
@@ -47,21 +48,22 @@ position:relative; float:left; }
 
 .infoBox h3 { float:right; width:50%; font-family:Cambria,"Hoefler Text","Liberation Serif",Times,"Times New Roman",serif; margin-top: 2%; }
 
-.rating { position:absolute; right:8.5%; bottom:-10.5%; height:23%; text-align:center; width:10%; z-index:2; }
+.rating { position:absolute; right:8%; bottom:-6%; z-index:2; }
 .ratingBall { width:20%;  position:absolute; right:0; bottom:0; z-index:1 }
-.golfhouse {  float:left; width:40%;}
-
+.golfhouse {  left:1%; top:2%; position:absolute; width:45%;}
+.infoLink {background-color:#0BD3DD; display:inline-block; position:absolute; bottom:2%; left:1%; }
 
 /*----------------KLUBBAR-------------------*/
 #buttons {padding-right:2%; padding-top:2%; float:right; }
 .normalbutton {width:15%; float:right; } 
 .normalbutton:hover {opacity:0.8;}
-.activebutton {}
+.activebutton { }
+
 
 
 /*-------------ENSKILD KLUBB-----------------*/
 
-#bildruta {display:block; width:45%; height:32%; margin-right:5%; background-image:url(pics/bg_golf3.jpg); background-size:cover }
+#bildruta { position:absolute; height:300px; width:30%; background-image:url(pics/bg_golf3.jpg); background-repeat:no-repeat; background-size:cover; border:solid 1px #000000; }
 
 
 #bildknapp1 { float:left; width:7%; height:100%; margin-left:1%; }
@@ -69,15 +71,22 @@ position:relative; float:left; }
 #bildruta img {width:100%; margin-top:300%; }
 #bildruta img:hover { opacity:0.6; }
 
-#coursetext {display:block; float:right; margin-right:0; width:35%; height:10%; background-color:#35CA30; }
-#courseinfo {display:block;  margin-right:5%; width:20%; height:10%; background-color:#AB4D4F; }
-#extrainfo {width:30%; height:30%;  }
+#coursetext {display:block; right:19%; width:32%; height:300px;  position:absolute; overflow:scroll; }
 
-#map2 { display:inline-block; height:30%; width:40%; float:left; margin-top:5%; }
-#mapButtons {display:block; float:left; margin-left:-4.5%; width:30%; height:40%; margin-top:5%; }
-#mapButtons ul {height:100%; margin-left:0; margin-top:0 }
-#mapButtons ul li {list-style:none; margin:0; height:18%; }
-#mapButtons img {width:70%; }
+#courseinfo {display:inline-block; margin-top:310px; right:19%; width:32%; position:absolute; border:solid 1px #000000;}
+#courseinfo table { width:90%; margin-left:auto; margin-right:auto;}
+#courseinfo img { width:40%; }
+
+#extrainfo { display:inline-block; width:32%; margin-top:610px; right:19%; border:solid 1px #000000; position:absolute; }
+
+#map2 { height:400px; width:30%; margin-top:310px; position:absolute; }
+
+#mapButtons { display:inline-block; width:40%; left:16%; margin-top:720px; position:absolute; }
+#mapButtons ul {height:100%; margin-top:0;  }
+#mapButtons ul li { list-style:none; }
+#mapButtons img {display:inline; width:20%; float:left; }
+
+#c_3ed58ccac01c24b23af7949c23655592 { display:block; margin-top:800px; right:30%; position:absolute;}
 
 
 /*------------RESEPLANERAREN-------------------*/

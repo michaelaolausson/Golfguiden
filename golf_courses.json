@@ -852,7 +852,8 @@
 		"nineholes":"no",
 		"paynplay":"no",
 		"restaurant":"yes",
-		"golfcar":"yes"
+		"golfcar":"yes",
+		"weather":"http://www.klart.se/widget/widget_loader/3ed58ccac01c24b23af7949c23655592"
 		
 	},
 	

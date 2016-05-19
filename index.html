@@ -10,6 +10,7 @@
 
 <script async defer
 src="http://maps.googleapis.com/maps/api/js?v=3&sensor=false&amp;libraries=places&key=AIzaSyA4sq08oYLsb2ZXGE6AbNHhQfrSFryVEsQ"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/geocode/json?"></script>
 <script type="text/javascript" src="events.js"></script>
 <script type="text/javascript" src="start.js"></script>
     
@@ -40,12 +41,15 @@ src="http://maps.googleapis.com/maps/api/js?v=3&sensor=false&amp;libraries=place
         </div>
         </div>
         
-    <form>
-            <input type="text" id="searchWindow" >
-            <br>
-            <p> <a href=""><img src="pics/sok.png" alt="sökknapp" id="searchButton"></a></p>
+        <div id="searchElem">
+    	<form>
+            <input type="text" id="searchWindow" placeholder="sök på ort" value="sök på ort">
+            
+            <p><a href="javascript:void(0)"><img src="pics/sok.png" alt="sökknapp" id="searchButton" ></a></p>
+            <input type="submit" style="display:none"/>
     
         </form>
+        </div>
         
     	<div id="map">
 		</div>
