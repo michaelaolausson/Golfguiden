@@ -23,7 +23,8 @@
 		"nineholes":"yes",
 		"paynplay":"yes",
 		"restaurant":"yes",
-		"golfcar":"yes"
+		"golfcar":"yes",
+		"greenfee":"450"
 		
 	
 	},
@@ -47,7 +48,8 @@
 		"nineholes":"no",
 		"paynplay":"no",
 		"restaurant":"yes",
-		"golfcar":"yes"
+		"golfcar":"yes",
+		"greenfee":"400"
 		
 	},
 	
@@ -70,7 +72,8 @@
 		"nineholes":"yes",
 		"paynplay":"yes",
 		"restaurant":"no",
-		"golfcar":"no"
+		"golfcar":"no",
+		"greenfee":"150"
 	
 	},
 	
@@ -93,7 +96,8 @@
 		"nineholes":"yes",
 		"paynplay":"no",
 		"restaurant":"yes",
-		"golfcar":"no"
+		"golfcar":"no",
+		"greenfee":"220"
 		
 	},
 	
@@ -116,7 +120,8 @@
 		"nineholes":"yes",
 		"paynplay":"yes",
 		"restaurant":"yes",
-		"golfcar":"yes"
+		"golfcar":"yes",
+		"greenfee":"325"
 		
 	},
 	
@@ -139,7 +144,8 @@
 		"nineholes":"no",
 		"paynplay":"no",
 		"restaurant":"yes",
-		"golfcar":"no"
+		"golfcar":"no",
+		"greenfee":"450"
 		
 	},
 	
@@ -162,7 +168,8 @@
 		"nineholes":"no",
 		"paynplay":"no",
 		"restaurant":"yes",
-		"golfcar":"no"
+		"golfcar":"no",
+		"greenfee":"380"
 		
 	},
 	
@@ -185,7 +192,8 @@
 		"nineholes":"yes",
 		"paynplay":"no",
 		"restaurant":"no",
-		"golfcar":"yes"
+		"golfcar":"yes",
+		"greenfee":"190"
 		
 	},
 	
@@ -208,7 +216,8 @@
 		"nineholes":"no",
 		"paynplay":"yes",
 		"restaurant":"yes",
-		"golfcar":"yes"
+		"golfcar":"yes",
+		"greenfee":"400"
 		
 	},
 	
@@ -231,7 +240,8 @@
 		"nineholes":"no",
 		"paynplay":"no",
 		"restaurant":"yes",
-		"golfcar":"yes"
+		"golfcar":"yes",
+		"greenfee":"440"
 		
 	},
 	
@@ -254,7 +264,8 @@
 		"nineholes":"no",
 		"paynplay":"no",
 		"restaurant":"yes",
-		"golfcar":"yes"
+		"golfcar":"yes",
+		"greenfee":"600"
 		
 	},
 	
@@ -277,7 +288,8 @@
 		"nineholes":"no",
 		"paynplay":"yes",
 		"restaurant":"yes",
-		"golfcar":"yes"
+		"golfcar":"yes",
+		"greenfee":"420"
 		
 	},
 	
@@ -300,7 +312,8 @@
 		"nineholes":"no",
 		"paynplay":"yes",
 		"restaurant":"yes",
-		"golfcar":"yes"
+		"golfcar":"yes",
+		"greenfee":"480"
 		
 	},
 	
@@ -323,7 +336,8 @@
 		"nineholes":"no",
 		"paynplay":"yes",
 		"restaurant":"yes",
-		"golfcar":"yes"
+		"golfcar":"yes",
+		"greenfee":"470"
 		
 	},
 	
@@ -346,7 +360,8 @@
 		"nineholes":"no",
 		"paynplay":"no",
 		"restaurant":"yes",
-		"golfcar":"yes"
+		"golfcar":"yes",
+		"greenfee":"520"
 		
 	},
 	
@@ -369,7 +384,8 @@
 		"nineholes":"yes",
 		"paynplay":"yes",
 		"restaurant":"yes",
-		"golfcar":"yes"
+		"golfcar":"yes",
+		"greenfee":"400"
 		
 	},
 	
@@ -392,7 +408,8 @@
 		"nineholes":"no",
 		"paynplay":"no",
 		"restaurant":"yes",
-		"golfcar":"yes"
+		"golfcar":"yes",
+		"greenfee":"250"
 		
 	},
 	
@@ -415,7 +432,8 @@
 		"nineholes":"yes",
 		"paynplay":"yes",
 		"restaurant":"no",
-		"golfcar":"no"
+		"golfcar":"no",
+		"greenfee":"250"
 		
 	},
 	
@@ -438,7 +456,8 @@
 		"nineholes":"yes",
 		"paynplay":"yes",
 		"restaurant":"no",
-		"golfcar":"yes"
+		"golfcar":"yes",
+		"greenfee":"270"
 		
 	},
 	
@@ -461,7 +480,8 @@
 		"nineholes":"no",
 		"paynplay":"no",
 		"restaurant":"yes",
-		"golfcar":"yes"
+		"golfcar":"yes",
+		"greenfee":"400"
 		
 	},
 	
@@ -484,7 +504,8 @@
 		"nineholes":"no",
 		"paynplay":"no",
 		"restaurant":"yes",
-		"golfcar":"no"
+		"golfcar":"no",
+		"greenfee":"350"
 		
 	},
 	
@@ -507,7 +528,8 @@
 		"nineholes":"no",
 		"paynplay":"yes",
 		"restaurant":"yes",
-		"golfcar":"no"
+		"golfcar":"no",
+		"greenfee":"395"
 		
 	},
 	
@@ -530,7 +552,8 @@
 		"nineholes":"yes",
 		"paynplay":"no",
 		"restaurant":"no",
-		"golfcar":"no"
+		"golfcar":"no",
+		"greenfee":"180"
 	
 	},
 	
@@ -553,7 +576,8 @@
 		"nineholes":"no",
 		"paynplay":"no",
 		"restaurant":"yes",
-		"golfcar":"yes"
+		"golfcar":"yes",
+		"greenfee":"350"
 		
 	},
 	
@@ -576,7 +600,8 @@
 		"nineholes":"yes",
 		"paynplay":"yes",
 		"restaurant":"no",
-		"golfcar":"no"
+		"golfcar":"no",
+		"greenfee":"190"
 		
 	},
 	
@@ -599,7 +624,8 @@
 		"nineholes":"no",
 		"paynplay":"no",
 		"restaurant":"no",
-		"golfcar":"yes"
+		"golfcar":"yes",
+		"greenfee":"450"
 		
 	},
 	
@@ -622,7 +648,8 @@
 		"nineholes":"no",
 		"paynplay":"no",
 		"restaurant":"yes",
-		"golfcar":"yes"
+		"golfcar":"yes",
+		"greenfee":"895"
 		
 	},
 	
@@ -645,7 +672,8 @@
 		"nineholes":"no",
 		"paynplay":"no",
 		"restaurant":"yes",
-		"golfcar":"no"
+		"golfcar":"no",
+		"greenfee":"450"
 		
 	},
 	
@@ -668,7 +696,8 @@
 		"nineholes":"yes",
 		"paynplay":"yes",
 		"restaurant":"yes",
-		"golfcar":"yes"
+		"golfcar":"yes",
+		"greenfee":"450"
 		
 	},
 	
@@ -691,7 +720,8 @@
 		"nineholes":"no",
 		"paynplay":"yes",
 		"restaurant":"yes",
-		"golfcar":"no"
+		"golfcar":"no",
+		"greenfee":"420"
 		
 	},
 	
@@ -714,7 +744,8 @@
 		"nineholes":"yes",
 		"paynplay":"no",
 		"restaurant":"yes",
-		"golfcar":"no"
+		"golfcar":"no",
+		"greenfee":"475"
 		
 	},
 	
@@ -737,7 +768,8 @@
 		"nineholes":"yes",
 		"paynplay":"yes",
 		"restaurant":"no",
-		"golfcar":"no"
+		"golfcar":"no",
+		"greenfee":"200"
 		
 	},
 	
@@ -760,7 +792,8 @@
 		"nineholes":"yes",
 		"paynplay":"yes",
 		"restaurant":"yes",
-		"golfcar":"no"
+		"golfcar":"no",
+		"greenfee":"450"
 		
 	},
 	
@@ -783,7 +816,8 @@
 		"nineholes":"yes",
 		"paynplay":"yes",
 		"restaurant":"no",
-		"golfcar":"no"
+		"golfcar":"no",
+		"greenfee":"200"
 		
 	},
 	
@@ -806,7 +840,8 @@
 		"nineholes":"yes",
 		"paynplay":"no",
 		"restaurant":"no",
-		"golfcar":"no"
+		"golfcar":"no",
+		"greenfee":"200"
 		
 	},
 	
@@ -829,7 +864,8 @@
 		"nineholes":"no",
 		"paynplay":"no",
 		"restaurant":"yes",
-		"golfcar":"yes"
+		"golfcar":"yes",
+		"greenfee":"420"
 		
 	},
 	
@@ -853,7 +889,7 @@
 		"paynplay":"no",
 		"restaurant":"yes",
 		"golfcar":"yes",
-		"weather":"http://www.klart.se/widget/widget_loader/3ed58ccac01c24b23af7949c23655592"
+		"greenfee":"480"
 		
 	},
 	
@@ -876,7 +912,8 @@
 		"nineholes":"yes",
 		"paynplay":"yes",
 		"restaurant":"yes",
-		"golfcar":"yes"
+		"golfcar":"yes",
+		"greenfee":"400"
 	
 	},
 	
@@ -899,7 +936,8 @@
 		"nineholes":"no",
 		"paynplay":"no",
 		"restaurant":"no",
-		"golfcar":"no"
+		"golfcar":"no",
+		"greenfee":"350"
 		
 	},
 	
@@ -922,7 +960,8 @@
 		"nineholes":"no",
 		"paynplay":"no",
 		"restaurant":"yes",
-		"golfcar":"yes"
+		"golfcar":"yes",
+		"greenfee":"370"
 		
 	}
 	

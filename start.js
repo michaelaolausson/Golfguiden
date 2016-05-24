@@ -6,13 +6,10 @@ var searchBtn; // sökknappen
 //arrays
 var JSONobjects = []; // array 
 var markers = []; // array för markering på kartan, men endast en ska användas..
-var idObjs; // objekt med taggar
-var nearbyObjects; //array med närliggande objekt.
-var nearbyObjects; // array med närliggande golfklubbar hämtat från nearbyObjects
 //karta
 var map; // kartobjekt
 var geocoder; // geocoder-objekt
-
+// programmet initierars. kartan initieras.
 function init() {
 	//sökfältet
 	input = document.getElementById("searchWindow");
@@ -39,6 +36,9 @@ function init() {
 	requestSMAPI();
 	submitEnter();
 } // end init
+
+addListener(window,"load",init);
+
 // funktion för att enter-tangenten ska fungera på samma sätt som sökknappen.
 function submitEnter() {
  	var submit = document.createElement("input");
@@ -48,15 +48,16 @@ function submitEnter() {
 	form.onsubmit = searchClub;
 	form.appendChild(submit);
 	addListener(form,"submit",function(event){
-		event.preventDefault()
+		event.preventDefault(); // förhindrar att onsubmit aktiveras när sidan laddas in.
 	});
 }// end sumbitEnter
-addListener(window,"load",init);
-// tar bort text ur sökfältet när det är i fokus.
+
+// tar bort text ur sökfältet när det är i fokus samt ändrar textfärg.
 function removeText() {
 	input.value = "";
 	input.style.color = "#000000";
 } // end removeText
+// hämtar samtliga golfrelaterade objekt ifrån SMAPI
 function requestSMAPI() {
 	var request; // request for AJAX
 	if (XMLHttpRequest) { request = new XMLHttpRequest(); } // Olika objekt (XMLHttpRequest eller ActiveXObject), beroende på webbläsare
@@ -69,7 +70,7 @@ function requestSMAPI() {
 			getSMAPI(request.responseText);
 	};
 } // end requestSMAPI
-// mellanlandning för smapi-objekten.
+// "mellanlandning" för smapi-objekten. Här ges arrayen JSONobjects sitt värde, vilken senare används i flera funktioner.
 function getSMAPI(response) {
 	response = JSON.parse(response);
 	JSONobjects = response.payload;
@@ -114,7 +115,7 @@ function getMap() {
         title: place.name,
         position: place.geometry.location,
     }));  
-	// lat och lng plockas ur positionobjektet för att användas vid anrop av requestNearbyClubs.
+	// lat och lng plockas ur positionobjektet för att användas vid anrop av requestNearbyObjects.
 	var lat = markers[0].getPosition().lat();
 	var lng = markers[0].getPosition().lng();
 	var placePosition = {lat:lat,lng:lng};
@@ -124,7 +125,7 @@ function getMap() {
 	        // Only geocodes have viewport.
 	        bounds.union(place.geometry.viewport);
 	// anropar ny requestfunktion för att kunna ladda in inforutor för närliggande klubbar.
-	        requestNearbyClubs(lat,lng); 
+	        requestNearbyObjects(lat,lng); 
 	    }else {
 	    	bounds.extend(place.geometry.location);
 	     }
@@ -166,7 +167,8 @@ var markers = [];
  		 });
 	}
 }//end getMapMarkers
-// lägger in värdet i textfältet i Geocode-sökning via google maps API
+// lägger in värdet i textfältet i Geocode-sökning via google maps API. 
+//input.value sparas i web storage för att värdet inte ska försvinna om sidan ex. laddas om.
 function searchClub() {
 	localStorage.inValue = input.value;
 	inValue = localStorage.inValue;
@@ -181,15 +183,16 @@ function searchClub() {
         icon: "pics/map_icons/here.png",
         position: results[0].geometry.location
 	    }));   	
-		// lat och lng plockas ur positionobjektet för att användas vid anrop av requestNearbyClubs.
+		// lat och lng plockas ur positionobjektet för att användas vid anrop i funktionen requestNearbyObjects.
 		var lat = markers[0].getPosition().lat();
 		var lng = markers[0].getPosition().lng();
 		var placePosition = {lat:lat,lng:lng};
 		lat = placePosition.lat;
 		lng = placePosition.lng;
 	
-		requestNearbyClubs(lat,lng);
-	    } else {
+		requestNearbyObjects(lat,lng);
+	    } 
+	    else {
 	      alert('Sökningen misslyckades. Anledning: ' + status);
 	    }
 	  	});
@@ -200,14 +203,14 @@ function loadClubPage() {
 	localStorage.clubID = clubID;
 	window.location.href = "clubinfo.html"; // ladda sida för klubbinformation
 } // end loadClubPage
-
-function requestNearbyClubs(lat,lng) {
-	nearbyObjects = []; //array med närliggande objekt.
+//Hämtar närliggande objekt.
+function requestNearbyObjects(lat,lng) {
+	var nearbyObjects = []; //array med närliggande objekt.
 	var request; // request for AJAX
 	if (XMLHttpRequest) { request = new XMLHttpRequest(); } // Olika objekt (XMLHttpRequest eller ActiveXObject), beroende på webbläsare
 	else if (ActiveXObject) { request = new ActiveXObject("Microsoft.XMLHTTP"); }
 	else { alert("Tyvärr inget stöd för AJAX, så data kan inte läsas in"); return false; }
-	request.open("GET","https://cactuar.lnu.se/course/1me302/?key=" + key + "&controller=location&method=getByLatLng&lat=" + lat + "&lng=" + lng + "&radius=100",true);
+	request.open("GET","https://cactuar.lnu.se/course/1me302/?key=" + key + "&controller=location&method=getByLatLng&lat=" + lat + "&lng=" + lng + "&radius=30",true);
 	request.send(null); // Skicka begäran till servern
 	request.onreadystatechange = function () { // Funktion för att avläsa status i kommunikationen
 		if ( (request.readyState == 4) && (request.status == 200) ) {
@@ -216,29 +219,28 @@ function requestNearbyClubs(lat,lng) {
 			for (var i = 0; i < nearbyObj.length; i++) {
 				nearbyObjects.push(nearbyObj[i]);
 			}
-			getNearbyClubs();
+			getNearbyClubs(nearbyObjects);
 		}
 	};
-}//end requestNearby
-// jämför de närliggande objekten mot golfobjekten. Om ett matchande id upptäcks så anropas addInfoBoxes()
-function getNearbyClubs() {
+}//end requestNearbyObjects
+// jämför de närliggande objekten mot golfobjekten, sorterar ut de närliggande objekt som också är golfobjekt.
+// om ett matchande id upptäcks så anropas addInfoBoxes()
+function getNearbyClubs(nearbyObjects) {
 	nearbyGolfClubs = [];
 	for (var i = 0; i < nearbyObjects.length; i++) {
-
 		for (var j = 0; j < JSONobjects.length; j++) {
-
 			if (nearbyObjects[i].id == JSONobjects[j].id) {
-
 				nearbyGolfClubs.push(nearbyObjects[i]);
-				addInfoBoxes();
 			}
 		}
-	}		
+	}
+	addInfoBoxes();		
 }//end getNearbyClubs
 //skriver ut infoboxar för närliggande klubbar i resElem. 
 function addInfoBoxes() {
 	//tömmer diven resElem innan nya rutor fylls på.
-	document.getElementById("resElem").innerHTML = "";
+	resElem = document.getElementById("resElem");
+	resElem.innerHTML = "";
 	//loopar utsorterade golfobjekt och lägger till inforutor med innehåll från dem.
 	if (nearbyGolfClubs.length > 0) {
 		for (var i = 0; i < nearbyGolfClubs.length; i++) {
@@ -272,11 +274,13 @@ function addInfoBoxes() {
 			golfballPic.alt = "bild golfboll";
 			//länk till infosida
 			var a = document.createElement("a");
-			a.href = ("clubinfo.html")
+			a.href = ("clubinfo.html");
 			a.id = nearbyGolfClubs[i].id;
 			a.className = "infoLink";
-			var linkName = document.createTextNode("Mer information");
-			a.appendChild(linkName);
+			var linkBtn = document.createElement("img");
+			linkBtn.src = "pics/merinfo.png";
+			linkBtn.className = "infoBtn";
+			a.appendChild(linkBtn);
 			infoBox.appendChild(golfballPic);
 			infoBox.appendChild(clubPic);
 			infoBox.appendChild(a);
@@ -288,7 +292,7 @@ function addInfoBoxes() {
 	}
 	else {
 		//finns inga objekt i nearbyGolfClubs skrivs en text ut istället.
-		document.getElementById("resElem").innerHTML = "Tyvärr finns det inga golfklubbar inom den bestämda radien. Prova en ny sökning.";
+		resElem.innerHTML = "<p id='errorTxt'>Tyvärr finns det inga golfklubbar inom den bestämda radien. Prova en ny sökning.</p>";
 	}
 }//end addInfoBoxes
 //laddar in clubinfo.html med id från vald klubb. 

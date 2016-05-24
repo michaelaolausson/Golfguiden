@@ -1,9 +1,11 @@
 var key = "reu|NdmV"; // SMAPI-nyckel
+//knappar
 var abcBtn; //knapp för sortering i bokstavsordning.
 var priceBtn; //knapp för sortering i pris, billigast först.
 var ratingsBtn;
 // array
 var JSONobjects; // array med JSON-object
+//initerar programmet, lägger till händelsehanterare
 function init() {
 	//sortering i bokstavsordning
 	abcBtn = document.getElementById("abcBtn");
@@ -16,9 +18,10 @@ function init() {
 	addListener(priceBtn,"click",sortObjByPrice);
 
 	requestSMAPI();
-}
+}// end initt
 
 addListener(window,"load",init);
+
 // anropar SMAPI och hämtar samtliga object som har taggen Golf. 
 function requestSMAPI() {
 	var request; // request for AJAX
@@ -32,11 +35,11 @@ function requestSMAPI() {
 	};
 } // end requestSMAPI
 //sorterar objekt efter betyg.
-
+// översätter JSON-objekten och lägger dem i en array. 
 function getSMAPI(response) {
 	response = JSON.parse(response);
 	JSONobjects = response.payload;
-	sortObjByAbc();
+	sortObjByAbc(); // defaultläge - bokstavssortering. 
 	return JSONobjects;
 }
 //sorterar JSON-objekten i bokstavsordning
@@ -47,18 +50,19 @@ function sortObjByAbc() {
     return a < b ? -1 : a > b ? 1 : 0;
 });
 	addInfoBoxes();
-}
+} // end sortByAbc
 //sorterar objekten efter ratings. högst betyg först.
 function sortObjByRate() {
 	JSONobjects.sort(function(a, b){return b.ratings - a.ratings;});
 	addInfoBoxes();
-} // sortObjByAbc
+} // end sortObjByRate
 //sorterar objekt efter prisnivå. lägsta först.
 function sortObjByPrice() {
 	JSONobjects.sort(function(a, b){return a.price_factor - b.price_factor;});
 	addInfoBoxes();
-}
-// skapar inforutor och placerar information i inforutor.
+} // end sortObjByPrice
+// skapar inforutor och placerar information i dem. 
+//Inforutorna placeras som element i html-koden
 function addInfoBoxes() {
 	var infoBox; // div-element för info
 	var clubTitle; // h3-element
@@ -77,7 +81,7 @@ function addInfoBoxes() {
 		h3.className = "clubTitle";
 		h3.appendChild(t);
 		infoBox.appendChild(h3);
-		var rating = JSONobjects[i].ratings;
+		rating = JSONobjects[i].ratings;
 		var r = document.createTextNode(rating);
 		//för att samtliga betyg ska skrivas ut i samma format (med en decimal) läggs här till .0 på de tal som saknar detta.
 		var r2 = document.createTextNode(".0");
@@ -98,11 +102,14 @@ function addInfoBoxes() {
 		golfballPic.alt = "bild golfboll";
 		//länk till infosida
 		var a = document.createElement("a");
-		a.href = ("clubinfo.html")
+		a.href = ("clubinfo.html");
 		a.id = JSONobjects[i].id;
 		a.className = "infoLink";
-		var linkName = document.createTextNode("Mer information");
-		a.appendChild(linkName);
+
+		var linkBtn = document.createElement("img");
+		linkBtn.src = "pics/merinfo.png";
+		linkBtn.className = "infoBtn";
+		a.appendChild(linkBtn);
 		infoBox.appendChild(golfballPic);
 		infoBox.appendChild(clubPic);
 		infoBox.appendChild(a);
@@ -111,8 +118,8 @@ function addInfoBoxes() {
 		//händlsehanterare för länken
 		addListener(a,"click",loadInfoPage);
 	}
-}//end addInfoBoxes
+} //end addInfoBoxes
 function loadInfoPage() {
  	var clubID = this.id;
 	localStorage.clubID = clubID;
-}
+} // end loadInfoPage

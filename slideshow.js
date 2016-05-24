@@ -27,8 +27,8 @@ var clubBtn;
 var activitiesBtn;
 var foodBtn;
 
-var weatherLink;
-var weather;
+//var weatherLink;
+//var weather;
 
 var jsonList;		// JSON-objekt
 
@@ -55,7 +55,7 @@ function init () {
 	activitiesBtn = document.getElementById("activitesBtn");
 	foodBtn = document.getElementById("foodBtn");
 	
-	weather = document.getElementById("c_3ed58ccac01c24b23af7949c23655592");
+	//weather = document.getElementById("weather").getElementsByTagName("src");
 	
 	currentPicNr = 1;
 	
@@ -128,7 +128,7 @@ function placePics()			//placerar kryss eller bock i rutorna
 			square6.src = "pics/check.png";
 			}
 			
-			getWeatherLink();
+			//getWeatherLink();
 
 		}
 		
@@ -252,7 +252,7 @@ function courseinfoPics() {		//går igenom JSON-filen och ser om banan har 18 h�
 }
 
 	
-function getWeatherLink() {
+/*function getWeatherLink() {
 	var k;				// Loopvariabel
 	var HTMLweather;		// Textsträng med ny HTML-kod
 	
@@ -273,8 +273,8 @@ function getWeatherLink() {
 
 function addWeather(){
 	
-	
-	weather.src = weatherLink;
-	}
+	weather =  weatherLink  ;
+	 
+	}*/
 
 

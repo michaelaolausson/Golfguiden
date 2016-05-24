@@ -7,10 +7,11 @@ var clubBtn; // knapp för golfklubbar
 var foodBtn; // knapp för restauranger
 var hotelBtn; // knapp för boende
 var activitiesBtn; // knapp för övriga aktiviterer
-var myMarkers = []; // klubbmarkeringar.
+//vald klubb
 var choosenMarker; // speciell markör för vald klubb
 var choosenClub; // club med id från web storage (sparat från startsidan.)
 // arryer för markeringar
+var myMarkers = []; // klubbmarkeringar.
 var clubMarkers;
 var foodMarkers;
 var hotelMarkers;
@@ -19,28 +20,46 @@ var cabinMarkers;
 var activitiesMarkers;
 //
 var distanceObjects; // array för distanslistan. 
+
 // programmet initieras
 function init() {
-	//knappar
+	//kart-knappar
 	clubBtn	= document.getElementById("clubBtn");
 	foodBtn	= document.getElementById("foodBtn");
 	hotelBtn = document.getElementById("hotelBtn");
 	activitiesBtn = document.getElementById("activitesBtn");
-	//händelsehanterare för knappar
-	addListener(clubBtn,"click",setClubMarkers);
-	addListener(hotelBtn,"click",setHotelMarkers);
-	addListener(hotelBtn,"click",setCampingMarkers);
-	addListener(hotelBtn,"click",setCabinMarkers);
-	addListener(foodBtn,"click",setFoodMarkers);
-	addListener(activitiesBtn,"click",setActivitiesMarkers);
+	//händelsehanterare för knappar preventDefault ser till så att sidan inte laddas in på nytt när händelsen click sker.
+	addListener(clubBtn,"click",function(event){
+		event.preventDefault()
+		setClubMarkers();
+	});
+	addListener(hotelBtn,"click",function(event){
+		event.preventDefault()
+		setHotelMarkers();
+	});	
+	addListener(hotelBtn,"click",function(event){
+		event.preventDefault()
+		setCampingMarkers();
+	});	
+	addListener(hotelBtn,"click",function(event){
+		event.preventDefault()
+		setCabinMarkers();
+	});	
+	addListener(foodBtn,"click",function(event){
+		event.preventDefault()
+		setFoodMarkers();
+	});	
+	addListener(activitiesBtn,"click",function(event){
+		event.preventDefault()
+		setActivitiesMarkers();
+	});	
 	//anrop av funktion för att hämta "baskartan"
 	requestID();
 	requestDistance();
 } // end init
 addListener(window,"load",init);
 // lägger in karta för klubb vald på startsidan.
-function requestID() {
-
+function requestID() {	
 	var request; // request for AJAX
 	var response; // JSONdata
 	var myLatLng; // koordinater för vald klubb.
@@ -53,6 +72,7 @@ function requestID() {
 		if ( (request.readyState == 4) && (request.status == 200) ) {
 			response = JSON.parse(request.responseText);
 			choosenClub = response.payload[0];
+			localStorage.thisClub = JSON.stringify(choosenClub); //sparar klubben i localStorage för att kunna användas i choosenclub.js
 			myLatLng =  {lat: Number(choosenClub.latitude), lng: Number(choosenClub.longitude)};
 			//"grundkartan läses in"
 			map = new google.maps.Map(document.getElementById('map2'), {center: myLatLng,zoom: 9,});
@@ -64,21 +84,11 @@ function requestID() {
 				{featureType: 'landscape',elementType: 'geometry.fill',stylers: [{color: '#799a24'}] },
 				{featureType: 'water',elementType: 'geometry.fill',stylers:[{color: '#4a6c8e'}]},  
 			]);
+
 		addClubInfo();
 		}
 	}
 }// end requestID
-//hämtar info från SMAPI och lägger i passande div.
-function addClubInfo() {
-
-	var description = document.getElementById("coursetext");//HTML-element för description.
-	var extrainfo = document.getElementById("extrainfo");
-	var open = choosenClub.opening_time.slice(0,5);
-	var closed = choosenClub.closing_time.slice(0,5);
-
-	coursetext.innerHTML = "<h2>" + choosenClub.name + "</h2>" + choosenClub.description;
-	extrainfo.innerHTML = "<b>Öppetider</b>" + "<br>" + open + "<br>" + closed;
-}
 // hämtar JSON-object från SMAPI med taggar baserat på vilken knapp som klickats på. 
 function requestSMAPI(callback, tags) {
 	var request; // request for AJAX
@@ -157,6 +167,7 @@ function setClubMarkers() {
 	} else {
 		showMarkers(clubMarkers);
 	}
+
 	removeListener(clubBtn,"click",setClubMarkers);
 	addListener(clubBtn,"click",hideClubMarkers);
 }
@@ -286,12 +297,10 @@ function createMarkers(smapiObjects, pic) {
 		infoWindow.open(map,this);
  		});
 	}//end loop
-
 	return markers;
 }//end createMarkers
 function showMarkers(markers) {
 	for (var i = 0; i < markers.length; i++) {
-
 		markers[i].setMap(map);
 	}
 } // end showMarkers
